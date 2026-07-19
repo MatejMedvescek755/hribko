@@ -26,7 +26,7 @@ client.on("messageCreate", async (message) => {
     if (!message.content.toLowerCase().startsWith(process.env.PREFIX + " ")) return;
 
     const hrib = message.content.substring(process.env.PREFIX.length + 1);
-    console.log(`${message.author.name} (${message.author}) zanima ${hrib}`);
+    console.log(`${message.author.username} (${message.author}) zanima ${hrib}`);
     message.channel.sendTyping();
 
     const { gorovjeId, hribId, hribName, alternativeResults } =

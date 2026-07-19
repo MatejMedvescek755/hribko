@@ -1,6 +1,7 @@
 # Hribko
 
 John Hribko, Jr.
+
 A Discord bot that fetches mountain weather forecasts from hribi.net and replies with a rendered forecast image.
 
 ## Setup
@@ -14,6 +15,3 @@ Send `<PREFIX> <mountain name>` in Discord to request a forecast.
 ## Example
 
 ![Mountain weather forecast example](MountainExample.png)
-
-## TODO
-* John Hribko, Jr. is typing ...
