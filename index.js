@@ -23,10 +23,11 @@ client.login(process.env.DISCORD_TOKEN);
 client.on("messageCreate", async (message) => {
   try {
     if (message.author.bot) return;
-    if (!message.content.startsWith(process.env.PREFIX + " ")) return;
+    if (!message.content.toLowerCase().startsWith(process.env.PREFIX + " ")) return;
 
     const hrib = message.content.substring(process.env.PREFIX.length + 1);
-    console.log(`{message.author.name} ({message.author}) zanima {hrib}`);
+    console.log(`${message.author.name} (${message.author}) zanima ${hrib}`);
+    message.channel.sendTyping();
 
     const { gorovjeId, hribId, hribName, alternativeResults } =
       await getMountainId(hrib);
@@ -60,7 +61,7 @@ client.on("messageCreate", async (message) => {
       ],
     });
   } catch (error) {
-    console.error(error);
+    console.error("Sm sporoču ampak", error);
     try {
       await message.reply({
         content: error.message,
@@ -111,7 +112,6 @@ const getMountainId = async (query) => {
 };
 
 async function parseTableDay(url) {
-  //supposed to be url now hardcoded
   const response = fetch(url);
   const $ = cheerio.load(await (await response).text());
   const items = $("#pan1 div table tbody");
