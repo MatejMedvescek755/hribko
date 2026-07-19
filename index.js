@@ -41,9 +41,7 @@ client.on("messageCreate", async (message) => {
     }
 
     //https://www.hribi.net/vreme_gora/triglav/1/1
-    const table = await parseTableWeek(
-      `https://www.hribi.net/vreme_gora/${hribName}/${gorovjeId}/${hribId}`,
-    );
+    const table = await parseTableWeek(hribName, gorovjeId, hribId);
     const imagePath = path.join(__dirname, "weather.png");
 
     await nodeHtmlToImage({
@@ -129,11 +127,12 @@ async function parseTableDay(url) {
   return htmlItems;
 }
 
-async function parseTableWeek(url) {
+async function parseTableWeek(hribName, gorovjeId, hribId) {
+  const url = `https://www.hribi.net/vreme_gora/${hribName}/${gorovjeId}/${hribId}`;
   const response = await fetch(url);
 
   if (!response.ok) {
-    throw new Error(`Request failed: ${response.status}`);
+    throw new Error(`Zahteva propadla: ${response.status}`);
   }
 
   const html = await response.text();
@@ -142,7 +141,7 @@ async function parseTableWeek(url) {
   const tbody = $('a[name="Ne"]').closest("tbody");
 
   if (!tbody.length) {
-    throw new Error("Weekly weather table not found");
+    throw new Error(`${hribName} nima vremena`);
   }
 
   tbody.find("img").each((_, img) => {
