@@ -49,6 +49,10 @@ client.on("messageCreate", async (message) => {
     await nodeHtmlToImage({
       output: imagePath,
       html: table,
+      puppeteerArgs: {
+        executablePath: '/usr/bin/google-chrome',
+        args: ['--no-sandbox'],
+      }
     });
 
     await message.reply({
