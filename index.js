@@ -124,10 +124,10 @@ async function parseTableWeek(hribName, gorovjeId, hribId) {
   const html = await response.text();
   const $ = cheerio.load(html);
 
-  const tbody = $('a[name="Ne"]').closest("tbody");
+  const tbody = $('.divvrem1').closest("tbody");
 
   if (!tbody.length) {
-    throw new Error(`${hribName} nima vremena`);
+    throw new Error(`[${hribName}](<${hribUrl(hribName, gorovjeId, hribId)}>) nima vremena`);
   }
 
   tbody.find("img").each((_, img) => {
