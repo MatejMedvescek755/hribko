@@ -11,6 +11,9 @@ A Discord bot that fetches mountain weather forecasts from hribi.net and replies
 
 Send `<PREFIX> <mountain name>` in Discord to request a forecast.
 
+## Example
+
+![Mountain weather forecast example](weather.png)
+
 ## TODO
-* case insensitivity za prefix
 * John Hribko, Jr. is typing ...
