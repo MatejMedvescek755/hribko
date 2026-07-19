@@ -13,7 +13,7 @@ Send `<PREFIX> <mountain name>` in Discord to request a forecast.
 
 ## Example
 
-![Mountain weather forecast example](weather.png)
+![Mountain weather forecast example](MountainExample.png)
 
 ## TODO
 * John Hribko, Jr. is typing ...
