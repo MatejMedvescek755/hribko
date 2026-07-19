@@ -19,9 +19,10 @@ client.login(process.env.DISCORD_TOKEN);
 // Documentation: https://discordjs.guide/legacy/app-creation/main-file
 // Invite url: https://discord.com/oauth2/authorize?client_id=1528135657132654742&permissions=8584986789675007&scope=bot+applications.commands
 
-const hribUrl = (hribName, gorovjeId, hribId) => `https://www.hribi.net/gora/${hribName}/${gorovjeId}/${hribId}`;
-const hribSearch = (query) => `https://www.hribi.net/iskalnik.asp?q=${query}`;
-const hribVreme = (hribName, gorovjeId, hribId) => `https://www.hribi.net/vreme_gora/${hribName}/${gorovjeId}/${hribId}`;
+const ue = (s) => s.replace(" ", "%20"); // url-encode
+const hribUrl = (hribName, gorovjeId, hribId) => ue(`https://www.hribi.net/gora/${hribName}/${gorovjeId}/${hribId}`);
+const hribSearch = (query) => ue(`https://www.hribi.net/iskalnik.asp?q=${query}`);
+const hribVreme = (hribName, gorovjeId, hribId) => ue(`https://www.hribi.net/vreme_gora/${hribName}/${gorovjeId}/${hribId}`);
 
 client.on("messageCreate", async (message) => {
   try {
