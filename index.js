@@ -86,13 +86,12 @@ const getMountainId = async (query) => {
 
   const $ = cheerio.load(html);
 
-  const allResults = $(".iskanjenaslov");
-  const firstResult = allResults.first();
-  const alternativeResults = $(".iskanjenaslov")
-    .filter((_, el) => {
+  const allResults = $(".iskanjenaslov").filter((_, el) => {
       const href = $(el).attr("href") || "";
       return href.includes("/gora/");
-    })
+    });
+  const firstResult = allResults.first();
+  const alternativeResults = allResults
     .map((_, el) => $(el).text().trim())
     .get()
     .splice(1);
