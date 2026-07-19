@@ -102,6 +102,7 @@ const getMountainId = async (query) => {
     const id = href.split("/").slice(3).join("/");
     const [gorovjeId, hribId] = id.split("/");
     if (hribId === undefined)
+      // bo ujeu spodnji "Ni rezultatov."
       throw new Error("userji se");
     return { gorovjeId, hribId, hribName, alternativeResults };
   }
